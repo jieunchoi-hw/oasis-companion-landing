@@ -1,6 +1,7 @@
 "use client";
 
 import { BentoDemo } from "@/components/bento-features";
+import { HowToUse } from "@/components/how-to-use";
 import { Icons } from "@/components/icons";
 import BlurIn from "@/components/magicui/blur-in";
 import { BorderBeam } from "@/components/magicui/border-beam";
@@ -56,7 +57,7 @@ function HeroPage() {
 
           <div
             ref={heroRef}
-            className="w-full flex flex-col lg:flex-row gap-8 lg:gap-14 items-start mt-8 sm:mt-10 md:mt-14"
+            className="w-full flex flex-col lg:flex-row gap-8 lg:gap-14 items-start mt-10 sm:mt-16 md:mt-20"
           >
             {/* 왼쪽 섹션 - 주요 메시지 */}
             <div
@@ -338,7 +339,10 @@ function HeroPage() {
         </div>
         <BentoDemo />
       </section>
-      <section id="open-source" className="container py-8 md:py-12 lg:py-24">
+
+      <HowToUse />
+
+      <section id="open-source" className="container py-8 md:py-8 lg:py-12">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <span className="inline-flex items-center gap-2">
             <span className="h-7 sm:h-8 md:h-9 lg:h-11 w-auto inline-block relative animate-glow">
