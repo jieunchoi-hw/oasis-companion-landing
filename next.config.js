@@ -5,9 +5,11 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath:
-    process.env.NODE_ENV === "production" ? "/oasis-companion-landing" : "",
+    process.env.NEXT_PUBLIC_BASE_PATH ||
+    (process.env.NODE_ENV === "production" ? "/oasis-companion-landing" : ""),
   assetPrefix:
-    process.env.NODE_ENV === "production" ? "/oasis-companion-landing" : "",
+    process.env.NEXT_PUBLIC_BASE_PATH ||
+    (process.env.NODE_ENV === "production" ? "/oasis-companion-landing" : ""),
 };
 
 module.exports = nextConfig;
