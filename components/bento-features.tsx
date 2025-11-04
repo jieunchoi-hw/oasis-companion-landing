@@ -2,7 +2,7 @@
 
 import { cn, withBasePath } from "@/lib/utils";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useInView } from "@/hooks/use-in-view";
 
 interface FeatureSection {
@@ -28,14 +28,14 @@ const featureSections: FeatureSection[] = [
         title: "메일·공지·웹페이지를 한 번에 요약",
         description:
           "현재 화면을 자동으로 분석해 핵심 문장만 정리합니다.\n불필요한 문장은 제거하고, 요점만 빠르게 파악할 수 있습니다.",
-        image: withBasePath("/features/web-summary.png"),
+        image: withBasePath("/features/web-summary.webp"),
         imageAlt: "요약 결과 예시",
       },
       {
         title: "클릭 한 번으로 검색 결과 확인",
         description:
           "웹, 뉴스, YouTube, 기술 문서까지 통합 검색을 지원합니다.\n탭을 이동하지 않아도 필요한 정보를 한눈에 확인할 수 있습니다.",
-        image: withBasePath("/features/summary-button.png"),
+        image: withBasePath("/features/summary-button.webp"),
         imageAlt: "검색 결과 예시",
       },
     ],
@@ -50,14 +50,14 @@ const featureSections: FeatureSection[] = [
         title: "사내 문서와 이메일을 안심하고 물어보세요",
         description:
           '회의록, 보고서, 프로젝트 문서 등 사내 자산을 안전하게 분석합니다.\n외부 유출 걱정 없이 "이 문서 요약해줘" "지난 회의 내용 찾아줘"라고 질문하세요.',
-        image: withBasePath("/features/safe-email.png"),
+        image: withBasePath("/features/safe-email.webp"),
         imageAlt: "사내 문서 요약을 요청하는 화면",
       },
       {
         title: "내부 시스템에 바로 연결하세요",
         description:
           "OASIS Companion은 사내 포털, 파일 시스템, 데이터베이스 등\n내부 시스템과 직접 연동되어 필요한 정보를 즉시 찾아줍니다.",
-        image: withBasePath("/features/safe-portal.png"),
+        image: withBasePath("/features/safe-portal.webp"),
         imageAlt: "내부 시스템 데이터에 질의하는 Companion UI",
       },
     ],
@@ -72,14 +72,14 @@ const featureSections: FeatureSection[] = [
         title: "사용자의 말투와 별명까지 기억",
         description:
           "개인별 선호 표현과 업무 스타일을 반영해\n자연스러운 맞춤 응답을 제공합니다.",
-        image: withBasePath("/features/custom-setting.png"),
+        image: withBasePath("/features/custom-setting.webp"),
         imageAlt: "사용자별 톤으로 응답하는 Companion",
       },
       {
         title: "문맥을 이해하는 대화형 기억",
         description:
           "형태소 분석과 유사도 기반 메모리로\n이전 대화 내용을 이해하고 연속적인 대화를 이어갑니다.",
-        image: withBasePath("/features/custom-memory.png"),
+        image: withBasePath("/features/custom-memory.webp"),
         imageAlt: "문맥 연결된 대화 흐름 예시",
       },
     ],
@@ -100,32 +100,7 @@ function FeatureCard({
   index?: number;
 }) {
   const [imageError, setImageError] = useState(false);
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const { ref, isInView } = useInView({ threshold: 0.1 });
-
-  useEffect(() => {
-    if (!isPreviewOpen) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsPreviewOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isPreviewOpen]);
-
-  const handleOpenPreview = () => {
-    if (!imageError) {
-      setIsPreviewOpen(true);
-    }
-  };
 
   return (
     <div
@@ -148,27 +123,21 @@ function FeatureCard({
       {/* 이미지 영역 */}
       <div className="relative h-[80%] w-full overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-950/20 dark:via-blue-950/20 dark:to-pink-950/20">
         {image && !imageError ? (
-          <button
-            type="button"
-            onClick={handleOpenPreview}
-            className="absolute inset-4 md:inset-6 lg:inset-8 cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-500"
-            aria-label="이미지 크게 보기"
-          >
-            <span className="relative block h-full w-full">
+          <div className="absolute inset-4 md:inset-6 lg:inset-8">
+            <div className="relative h-full w-full">
               <Image
                 src={image}
                 alt={imageAlt || title}
                 fill
-                className="object-contain transition-transform duration-500 ease-out group-hover:scale-110"
+                className="object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                 onError={() => {
                   setImageError(true);
-                  setIsPreviewOpen(false);
                 }}
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority={false}
               />
-            </span>
-          </button>
+            </div>
+          </div>
         ) : (
           <div className="flex h-full items-center justify-center p-8">
             <div className="text-center space-y-4 w-full">
@@ -204,53 +173,6 @@ function FeatureCard({
           {description}
         </p>
       </div>
-
-      {isPreviewOpen && image && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${imageAlt || title} 이미지 확대보기`}
-          onClick={() => setIsPreviewOpen(false)}
-        >
-          <button
-            type="button"
-            className="absolute right-6 top-6 rounded-full bg-white/10 p-2 text-white shadow-lg transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            onClick={() => setIsPreviewOpen(false)}
-            aria-label="닫기"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-5 w-5"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-          </button>
-
-          <div
-            className="relative w-[90vw] max-w-6xl h-[85vh] flex items-center justify-center"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="relative w-full h-full">
-              <Image
-                src={image}
-                alt={imageAlt || title}
-                fill
-                className="rounded-lg object-contain drop-shadow-2xl"
-                sizes="90vw"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

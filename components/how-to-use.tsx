@@ -69,7 +69,7 @@ export function HowToUse() {
             </div>
             <div className="w-full h-48 rounded-lg overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-900/20 dark:via-blue-900/20 dark:to-pink-900/20 flex items-center justify-center border border-purple-100 dark:border-purple-800/30">
               <Image
-                src={withBasePath("/use/chrome.png")}
+                src={withBasePath("/use/chrome.webp")}
                 alt="Chrome 확장프로그램 설치 화면"
                 width={400}
                 height={192}
@@ -101,7 +101,7 @@ export function HowToUse() {
             </div>
             <div className="w-full h-48 rounded-lg overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-900/20 dark:via-blue-900/20 dark:to-pink-900/20 flex items-center justify-center border border-purple-100 dark:border-purple-800/30">
               <Image
-                src={withBasePath("/use/login.png")}
+                src={withBasePath("/use/login.webp")}
                 alt="사내 계정 로그인 화면"
                 width={400}
                 height={192}
@@ -133,7 +133,7 @@ export function HowToUse() {
             </div>
             <div className="w-full h-48 rounded-lg overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-900/20 dark:via-blue-900/20 dark:to-pink-900/20 flex items-center justify-center border border-purple-100 dark:border-purple-800/30">
               <Image
-                src={withBasePath("/use/chat.png")}
+                src={withBasePath("/use/chat.webp")}
                 alt="바로 사용 화면"
                 width={400}
                 height={192}
