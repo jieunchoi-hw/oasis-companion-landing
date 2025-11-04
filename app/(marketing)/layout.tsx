@@ -1,4 +1,5 @@
 import { MainNav } from "@/components/main-nav";
+import { withBasePath } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -12,8 +13,29 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "OASIS Companion",
-  description:
-    "OASIS Companion is a platform that helps you find the perfect quote for your mood.",
+  description: "OASIS Companion changes your life and works.",
+  openGraph: {
+    title: "OASIS Companion",
+    description: "OASIS Companion changes your life and works.",
+    images: [
+      {
+        url: withBasePath("/thumbnail.png"),
+        width: 1200,
+        height: 630,
+        alt: "OASIS Companion",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "OASIS Companion",
+    description: "OASIS Companion changes your life and works.",
+    images: [withBasePath("/thumbnail.png")],
+  },
+  icons: {
+    icon: withBasePath("/favicon.ico"),
+  },
 };
 
 export default function MarketingLayout({

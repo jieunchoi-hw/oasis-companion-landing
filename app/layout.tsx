@@ -1,5 +1,5 @@
 import { MainNav } from "@/components/main-nav";
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: "OASIS Companion changes your life and works.",
     images: [
       {
-        url: "/thumbnail.png",
+        url: withBasePath("/thumbnail.png"),
         width: 1200,
         height: 630,
         alt: "OASIS Companion",
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "OASIS Companion",
     description: "OASIS Companion changes your life and works.",
-    images: ["/thumbnail.png"],
+    images: [withBasePath("/thumbnail.png")],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: withBasePath("/favicon.ico"),
   },
 };
 
