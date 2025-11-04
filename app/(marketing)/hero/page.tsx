@@ -6,7 +6,7 @@ import ShineBorder from "@/components/magicui/shine-border";
 import { Companies } from "@/components/social-proof";
 import { buttonVariants } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 import Link from "@/node_modules/next/link";
 import React from "react";
 
@@ -224,7 +224,7 @@ function HeroPage() {
         </div>
         <div className="relative rounded-xl mx-auto justify-center flex flex-col items-center lg:max-w-[1000px] overflow-hidden">
           <video
-            src="/video/intro.mp4"
+            src={withBasePath("/video/intro.mp4")}
             autoPlay
             loop
             muted
