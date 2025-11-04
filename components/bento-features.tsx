@@ -129,7 +129,7 @@ function FeatureCard({
                 src={image}
                 alt={imageAlt || title}
                 fill
-                className="object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                className="object-contain transition-transform duration-500 ease-out group-hover:scale-125"
                 onError={() => {
                   setImageError(true);
                 }}
