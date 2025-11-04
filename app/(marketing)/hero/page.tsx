@@ -123,7 +123,7 @@ function HeroPage() {
                   Get Started
                 </Link> */}
                 <a
-                  href="/#features"
+                  href={withBasePath("/#features")}
                   className={cn(
                     buttonVariants({ variant: "outline", size: "lg" })
                   )}
