@@ -19,24 +19,22 @@ function HeroPage() {
             className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
             target="_blank"
           > */}
-           
-        
-            <ShineBorder
-      className="text-center capitalize bg-muted px-4 py-1.5 text-lg font-medium absolute"
-      color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
-    >
-     Introducing QuotesAI ✨
-      </ShineBorder>
-  
+
+          <ShineBorder
+            className="text-center capitalize bg-muted px-4 py-1.5 text-lg font-medium absolute"
+            color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+          >
+            Introducing OASIS Companion ✨
+          </ShineBorder>
+
           {/* </Link> */}
-         
+
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-20">
-            
-         Infusing Wisdom into Your Every Mood
-     
+            Infusing Wisdom into Your Every Mood
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            Popular Quotes for all categories from millions of books, people, and authors. 
+            Popular Quotes for all categories from millions of books, people,
+            and authors.
           </p>
           <div className="space-x-4">
             <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
@@ -44,56 +42,53 @@ function HeroPage() {
             </Link>
             <a
               href="/#features"
-              
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mt-sm-2")}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "mt-sm-2"
+              )}
             >
               Let&apos;s Explore 👇🏻
             </a>
-            
           </div>
         </div>
         <div className="relative rounded-xl mx-auto justify-center flex flex-col items-center lg:max-w-[1000px] overflow-hidden md:overflow-auto lg:overflow-auto">
-      <img
-        src="/darkoutput.png"
-        alt="Hero Image"
-        className="hidden lg:max-w-[1000px]  rounded-[inherit] border object-contain shadow-lg dark:block overflow-hidden md:overflow-auto lg:overflow-auto"
-      />
-      <img
-        src="/lightoutput.png"
-        alt="Hero Image"
-        className="block lg:max-w-[1000px]  rounded-[inherit] border object-contain shadow-lg dark:hidden overflow-hidden md:overflow-auto lg:overflow-auto"
-      />
- 
-      <BorderBeam size={250}/>
-    </div>
+          <img
+            src="/darkoutput.png"
+            alt="Hero Image"
+            className="hidden lg:max-w-[1000px]  rounded-[inherit] border object-contain shadow-lg dark:block overflow-hidden md:overflow-auto lg:overflow-auto"
+          />
+          <img
+            src="/lightoutput.png"
+            alt="Hero Image"
+            className="block lg:max-w-[1000px]  rounded-[inherit] border object-contain shadow-lg dark:hidden overflow-hidden md:overflow-auto lg:overflow-auto"
+          />
+
+          <BorderBeam size={250} />
+        </div>
       </section>
 
       <Companies />
-      
+
       <section
         id="features"
         className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-10"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-        <h3 className="text-center text-sm font-semibold text-gray-500 pb-2">
-              FEATURES
-            </h3>         
+          <h3 className="text-center text-sm font-semibold text-gray-500 pb-2">
+            FEATURES
+          </h3>
         </div>
-        <BentoDemo />        
+        <BentoDemo />
       </section>
       <section id="open-source" className="container py-8 md:py-12 lg:py-24">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            QuotesAI - Unlock the Wisdom
+            OASIS Companion - Unlock the Wisdom
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Let&apos;s Try Now - {" "}
-            <a
-              href="/login"
-             
-              className="underline underline-offset-4"
-            >
-              Get Started 
+            Let&apos;s Try Now -{" "}
+            <a href="/login" className="underline underline-offset-4">
+              Get Started
             </a>
             .{" "}
           </p>

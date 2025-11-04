@@ -26,8 +26,8 @@ function MobileNav() {
     className="flex items-center lg:hidden sm:block md:hidden"
     onOpenChange={setOpen}
   >
-    <Icons.logo className="mr-2 h-6 w-6" />
-    <span className="font-bold">QuotesAI</span>
+    <Icons.logo className="mr-2 h-6 w-auto" />
+    <span className="font-bold">OASIS Companion</span>
   </MobileLink>
   );
 }

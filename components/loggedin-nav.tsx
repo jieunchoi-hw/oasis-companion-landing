@@ -64,8 +64,8 @@ export function LoggedInNav() {
   return (
     <div className="mr-4 md:flex">
       <Link href="/dashboard" className="lg:mr-6 sm:mr-0 flex items-center gap-2">
-        <Icons.logo className="h-6 w-6 lg:block md:block" />
-        <span className="font-bold lg:block md:block">QuotesAI</span>
+        <Icons.logo className="h-6 w-auto lg:block md:block" />
+        <span className="font-bold lg:block md:block">OASIS Companion</span>
         <Badge className="hidden lg:block md:block">Beta</Badge>
 
         
@@ -84,7 +84,7 @@ export function LoggedInNav() {
                       className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                       href="/"
                     >
-                      <Icons.logo className="h-6 w-6" />
+                      <Icons.logo className="h-6 w-auto" />
                       <div className="mb-2 mt-4 text-lg font-medium">
                         shadcn/ui
                       </div>

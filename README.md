@@ -42,23 +42,28 @@ STRIPE_WEBHOOK_SECRET=
 ## Setup Instructions
 
 1. **Clone the repository:**
+
    ```sh
    git clone https://github.com/jieunchoi-hw/oasis-companion-landing.git
    cd oasis-companion-landing
    ```
 
 2. **Create and populate the `.env` file:**
+
    ```sh
    cp .env.example .env
    ```
+
    Edit the `.env` file and add your credentials.
 
 3. **Install dependencies:**
+
    ```sh
    pnpm install
    ```
 
 4. **Run the development server:**
+
    ```sh
    pnpm run dev
    ```
