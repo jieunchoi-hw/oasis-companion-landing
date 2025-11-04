@@ -257,7 +257,7 @@ function FeatureCard({
 
 export function BentoDemo() {
   return (
-    <div className="space-y-24 py-12">
+    <div className="space-y-24 py-4">
       {featureSections.map((section, sectionIndex) => {
         const SectionHeader = () => {
           const { ref, isInView } = useInView({ threshold: 0.2 });
