@@ -1,3 +1,5 @@
+"use client";
+
 import { BentoDemo } from "@/components/bento-features";
 import { Icons } from "@/components/icons";
 import BlurIn from "@/components/magicui/blur-in";
@@ -7,51 +9,74 @@ import { Companies } from "@/components/social-proof";
 import { buttonVariants } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { cn, withBasePath } from "@/lib/utils";
+import { useInView } from "@/hooks/use-in-view";
 import Link from "@/node_modules/next/link";
 import React from "react";
 
 function HeroPage() {
+  const { ref: heroRef, isInView: heroInView } = useInView({ threshold: 0.1 });
+  const { ref: videoRef, isInView: videoInView } = useInView({
+    threshold: 0.2,
+  });
+
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-20">
         <div className="container flex max-w-[80rem] flex-col items-center gap-4 sm:mb-10 lg:mb-20 md:sm-20">
-          {/* <Link
-            href="https://twitter.com/kathanmehtaa"
-            className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
-            target="_blank"
-          > */}
-
-          <ShineBorder
-            className="text-center capitalize  px-4 py-1.5 text-lg font-medium absolute"
-            color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+          {/* Shine Border with initial animation */}
+          <div
+            className="animate-fade-in-up w-full flex justify-center"
+            style={{ animationDelay: "0.2s" }}
           >
-            <span className="inline-flex items-center gap-2">
-              Introducing OASIS Companion
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4"
-              >
-                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
-                <path d="M5 3v4" />
-                <path d="M19 17v4" />
-                <path d="M3 5h4" />
-                <path d="M17 19h4" />
-              </svg>
-            </span>
-          </ShineBorder>
+            <ShineBorder
+              className="text-center capitalize px-4 py-1.5 text-lg font-medium"
+              color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+            >
+              <span className="inline-flex items-center gap-2">
+                Introducing OASIS Companion
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4 w-4"
+                >
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                  <path d="M5 3v4" />
+                  <path d="M19 17v4" />
+                  <path d="M3 5h4" />
+                  <path d="M17 19h4" />
+                </svg>
+              </span>
+            </ShineBorder>
+          </div>
 
-          {/* </Link> */}
-
-          <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-14 items-start mt-28 sm:mt-32 md:mt-36">
+          <div
+            ref={heroRef}
+            className="w-full flex flex-col lg:flex-row gap-8 lg:gap-14 items-start mt-8 sm:mt-10 md:mt-14"
+          >
             {/* 왼쪽 섹션 - 주요 메시지 */}
-            <div className="flex-1 w-full">
-              <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-6xl text-left">
+            <div
+              className={cn(
+                "flex-1 w-full transition-all duration-1000 ease-out",
+                heroInView
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-8"
+              )}
+              style={{ transitionDelay: "0.3s" }}
+            >
+              <h1
+                className={cn(
+                  "font-heading text-3xl sm:text-5xl md:text-6xl lg:text-6xl text-left transition-all duration-1000 ease-out",
+                  heroInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                )}
+                style={{ transitionDelay: "0.5s" }}
+              >
                 보안은 그대로, <br />
                 일하는 방식은 새롭게 <br />
                 <span className="inline-flex items-center gap-2">
@@ -67,13 +92,29 @@ function HeroPage() {
                   </span>
                 </span>
               </h1>
-              <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 mt-6 text-left">
+              <p
+                className={cn(
+                  "max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8 mt-6 text-left transition-all duration-1000 ease-out",
+                  heroInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                )}
+                style={{ transitionDelay: "0.7s" }}
+              >
                 웹페이지·이메일·문서를 한 번에 요약하고, <br />
                 필요한 정보를 바로 물어보세요.
                 <br />
                 대기업·공공기관의 망분리 환경에서도 안심하고 사용할 수 있습니다.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              <div
+                className={cn(
+                  "flex flex-col sm:flex-row gap-4 mt-8 transition-all duration-1000 ease-out",
+                  heroInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                )}
+                style={{ transitionDelay: "0.9s" }}
+              >
                 {/* <Link
                   href="/login"
                   className={cn(buttonVariants({ size: "lg" }))}
@@ -107,10 +148,26 @@ function HeroPage() {
             </div>
 
             {/* 오른쪽 섹션 - 4가지 키워드 */}
-            <div className="flex-1 w-full relative pl-0 lg:pl-8 border-l-0 lg:border-l border-dashed border-gray-300 dark:border-gray-700">
+            <div
+              className={cn(
+                "flex-1 w-full relative pl-0 lg:pl-8 border-l-0 lg:border-l border-dashed border-gray-300 dark:border-gray-700 transition-all duration-1000 ease-out",
+                heroInView
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 translate-x-8"
+              )}
+              style={{ transitionDelay: "0.4s" }}
+            >
               <div className="space-y-8">
                 {/* 기능 카드 1 — 웹페이지·이메일 요약 */}
-                <div className="flex items-start gap-4">
+                <div
+                  className={cn(
+                    "flex items-start gap-4 transition-all duration-700 ease-out",
+                    heroInView
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-4"
+                  )}
+                  style={{ transitionDelay: "0.6s" }}
+                >
                   <div className="flex-shrink-0 mt-1">
                     <svg
                       width="24"
@@ -140,7 +197,15 @@ function HeroPage() {
                 </div>
 
                 {/* 기능 카드 2 — 검색 & 정보 탐색 */}
-                <div className="flex items-start gap-4">
+                <div
+                  className={cn(
+                    "flex items-start gap-4 transition-all duration-700 ease-out",
+                    heroInView
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-4"
+                  )}
+                  style={{ transitionDelay: "0.8s" }}
+                >
                   <div className="flex-shrink-0 mt-1">
                     <svg
                       width="24"
@@ -167,7 +232,15 @@ function HeroPage() {
                 </div>
 
                 {/* 기능 카드 3 — 법률·정책 문서 조회 */}
-                <div className="flex items-start gap-4">
+                <div
+                  className={cn(
+                    "flex items-start gap-4 transition-all duration-700 ease-out",
+                    heroInView
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-4"
+                  )}
+                  style={{ transitionDelay: "1.0s" }}
+                >
                   <div className="flex-shrink-0 mt-1">
                     <svg
                       width="24"
@@ -194,7 +267,15 @@ function HeroPage() {
                 </div>
 
                 {/* 기능 카드 4 — 보안 환경 호환성 */}
-                <div className="flex items-start gap-4">
+                <div
+                  className={cn(
+                    "flex items-start gap-4 transition-all duration-700 ease-out",
+                    heroInView
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-4"
+                  )}
+                  style={{ transitionDelay: "1.2s" }}
+                >
                   <div className="flex-shrink-0 mt-1">
                     <svg
                       width="24"
@@ -222,7 +303,15 @@ function HeroPage() {
             </div>
           </div>
         </div>
-        <div className="relative rounded-xl mx-auto justify-center flex flex-col items-center lg:max-w-[1000px] overflow-hidden">
+        <div
+          ref={videoRef}
+          className={cn(
+            "relative rounded-xl mx-auto justify-center flex flex-col items-center lg:max-w-[1000px] overflow-hidden transition-all duration-1000 ease-out",
+            videoInView
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 translate-y-12 scale-95"
+          )}
+        >
           <video
             src={withBasePath("/video/intro.mp4")}
             autoPlay

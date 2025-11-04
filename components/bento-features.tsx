@@ -3,6 +3,7 @@
 import { cn, withBasePath } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useInView } from "@/hooks/use-in-view";
 
 interface FeatureSection {
   smallTitle: string;
@@ -90,14 +91,17 @@ function FeatureCard({
   description,
   image,
   imageAlt,
+  index = 0,
 }: {
   title: string;
   description: string;
   image?: string;
   imageAlt?: string;
+  index?: number;
 }) {
   const [imageError, setImageError] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const { ref, isInView } = useInView({ threshold: 0.1 });
 
   useEffect(() => {
     if (!isPreviewOpen) {
@@ -125,15 +129,21 @@ function FeatureCard({
 
   return (
     <div
+      ref={ref}
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-2xl",
         "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
         "transform-gpu dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
-        "transition-shadow duration-300 ease-out",
+        "transition-all duration-700 ease-out",
         "hover:[box-shadow:0_0_0_1px_rgba(0,0,0,.05),0_4px_8px_rgba(0,0,0,.1),0_20px_40px_rgba(0,0,0,.15)]",
         "dark:hover:[box-shadow:0_0_0_1px_rgba(255,255,255,.15),0_4px_8px_rgba(0,0,0,.3),0_20px_40px_rgba(0,0,0,.4)]",
-        "h-full min-h-[400px]"
+        "h-full min-h-[400px]",
+        // 애니메이션 클래스
+        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       )}
+      style={{
+        transitionDelay: `${index * 150}ms`,
+      }}
     >
       {/* 이미지 영역 */}
       <div className="relative h-[80%] w-full overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-950/20 dark:via-blue-950/20 dark:to-pink-950/20">
@@ -248,29 +258,75 @@ function FeatureCard({
 export function BentoDemo() {
   return (
     <div className="space-y-24 py-12">
-      {featureSections.map((section, sectionIndex) => (
-        <div key={sectionIndex} className="space-y-8">
-          {/* 섹션 헤더 */}
-          <div className="text-center space-y-4">
-            <p className="text-sm font-medium text-muted-foreground">
-              {section.smallTitle}
-            </p>
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              {section.largeTitle}
-            </h2>
-            <p className="mx-auto max-w-2xl whitespace-pre-line text-lg leading-relaxed text-muted-foreground">
-              {section.description}
-            </p>
-          </div>
+      {featureSections.map((section, sectionIndex) => {
+        const SectionHeader = () => {
+          const { ref, isInView } = useInView({ threshold: 0.2 });
 
-          {/* 카드 그리드 */}
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
-            {section.cards.map((card, cardIndex) => (
-              <FeatureCard key={cardIndex} {...card} />
-            ))}
+          return (
+            <div
+              ref={ref}
+              className={cn(
+                "text-center space-y-4 transition-all duration-700 ease-out",
+                isInView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-6"
+              )}
+            >
+              <p
+                className={cn(
+                  "text-sm font-medium text-muted-foreground transition-all duration-700 ease-out",
+                  isInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                )}
+                style={{ transitionDelay: "100ms" }}
+              >
+                {section.smallTitle}
+              </p>
+              <h2
+                className={cn(
+                  "text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl transition-all duration-700 ease-out",
+                  isInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                )}
+                style={{ transitionDelay: "200ms" }}
+              >
+                {section.largeTitle}
+              </h2>
+              <p
+                className={cn(
+                  "mx-auto max-w-2xl whitespace-pre-line text-lg leading-relaxed text-muted-foreground transition-all duration-700 ease-out",
+                  isInView
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                )}
+                style={{ transitionDelay: "300ms" }}
+              >
+                {section.description}
+              </p>
+            </div>
+          );
+        };
+
+        return (
+          <div key={sectionIndex} className="space-y-8">
+            {/* 섹션 헤더 */}
+            <SectionHeader />
+
+            {/* 카드 그리드 */}
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
+              {section.cards.map((card, cardIndex) => (
+                <FeatureCard
+                  key={cardIndex}
+                  {...card}
+                  index={cardIndex + sectionIndex * 2}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
