@@ -25,7 +25,25 @@ function HeroPage() {
             className="text-center capitalize  px-4 py-1.5 text-lg font-medium absolute"
             color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
           >
-            Introducing OASIS Companion ✨
+            <span className="inline-flex items-center gap-2">
+              Introducing OASIS Companion
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4"
+              >
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                <path d="M5 3v4" />
+                <path d="M19 17v4" />
+                <path d="M3 5h4" />
+                <path d="M17 19h4" />
+              </svg>
+            </span>
           </ShineBorder>
 
           {/* </Link> */}
@@ -68,7 +86,22 @@ function HeroPage() {
                     buttonVariants({ variant: "outline", size: "lg" })
                   )}
                 >
-                  Let&apos;s Explore 👇🏻
+                  <span className="inline-flex items-center gap-2">
+                    Let&apos;s Explore
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-4 w-4"
+                    >
+                      <path d="M12 5v14" />
+                      <path d="m19 12-7 7-7-7" />
+                    </svg>
+                  </span>
                 </a>
               </div>
             </div>
@@ -220,15 +253,20 @@ function HeroPage() {
       </section>
       <section id="open-source" className="container py-8 md:py-12 lg:py-24">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            OASIS Companion - Unlock the Wisdom
-          </h2>
+          <span className="inline-flex items-center gap-2">
+            <span className="h-7 sm:h-8 md:h-9 lg:h-11 w-auto inline-block relative animate-glow">
+              <Logo
+                width={180}
+                height={44}
+                className="h-full w-auto object-contain"
+              />
+            </span>
+            <span className="bg-gradient-to-r from-purple-600 via-purple-500 to-purple-400 bg-clip-text text-transparent text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-heading animate-text-glow">
+              Companion
+            </span>
+          </span>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Let&apos;s Try Now -{" "}
-            <a href="/login" className="underline underline-offset-4">
-              Get Started
-            </a>
-            .{" "}
+            Let&apos;s Try Now
           </p>
         </div>
       </section>
