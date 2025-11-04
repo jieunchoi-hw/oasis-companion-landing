@@ -2,8 +2,8 @@ import { MainNav } from "@/components/main-nav";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { fontSans } from "@/lib/fonts";
 import Link from "@/node_modules/next/link";
@@ -17,8 +17,8 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Quote AI",
-  description: "Generate Daily Quotes",
+  title: "OASIS Companion",
+  description: "OASIS Companion changes your life and works.",
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "relative flex min-h-screen w-full flex-col justify-center scroll-smooth bg-background font-sans antialiased",
+          "relative flex min-h-screen w-full flex-col justify-center scroll-smooth bg-background font-sans antialiased"
         )}
       >
         <ThemeProvider
