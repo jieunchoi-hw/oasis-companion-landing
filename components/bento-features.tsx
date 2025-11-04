@@ -104,11 +104,14 @@ function FeatureCard({
         "group relative flex flex-col overflow-hidden rounded-2xl",
         "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
         "transform-gpu dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
-        "h-full min-h-[500px]"
+        "transition-shadow duration-300 ease-out",
+        "hover:[box-shadow:0_0_0_1px_rgba(0,0,0,.05),0_4px_8px_rgba(0,0,0,.1),0_20px_40px_rgba(0,0,0,.15)]",
+        "dark:hover:[box-shadow:0_0_0_1px_rgba(255,255,255,.15),0_4px_8px_rgba(0,0,0,.3),0_20px_40px_rgba(0,0,0,.4)]",
+        "h-full min-h-[400px]"
       )}
     >
       {/* 이미지 영역 */}
-      <div className="relative h-[60%] w-full overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-950/20 dark:via-blue-950/20 dark:to-pink-950/20">
+      <div className="relative h-[80%] w-full overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-950/20 dark:via-blue-950/20 dark:to-pink-950/20">
         {image && !imageError ? (
           <div className="absolute inset-4 md:inset-6 lg:inset-8">
             <Image
@@ -177,7 +180,7 @@ export function BentoDemo() {
           </div>
 
           {/* 카드 그리드 */}
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
             {section.cards.map((card, cardIndex) => (
               <FeatureCard key={cardIndex} {...card} />
             ))}
