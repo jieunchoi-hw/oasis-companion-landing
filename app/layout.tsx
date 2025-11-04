@@ -38,9 +38,6 @@ export const metadata: Metadata = {
     description: "OASIS Companion changes your life and works.",
     images: ["/thumbnail.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({
