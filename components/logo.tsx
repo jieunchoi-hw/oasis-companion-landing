@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-type LogoProps = React.ComponentProps<typeof Image>;
+type LogoProps = Omit<React.ComponentProps<typeof Image>, "src" | "alt">;
 
 export function Logo(props: LogoProps) {
   const { resolvedTheme } = useTheme();
@@ -18,16 +18,13 @@ export function Logo(props: LogoProps) {
   const isDark = mounted && resolvedTheme === "dark";
   const logoSource = isDark ? "/darklogo.svg" : "/lightlogo.svg";
 
-  // src와 alt를 제외한 나머지 props만 spread
-  const { src, alt, ...restProps } = props;
-
   return (
     <Image
       src={logoSource}
       alt="OASIS Logo"
       width={180}
       height={44}
-      {...restProps}
+      {...props}
     />
   );
 }
