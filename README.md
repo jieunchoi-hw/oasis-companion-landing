@@ -1,13 +1,6 @@
-# QuotesAI
+# OASIS Companion Landing
 
-QuotesAI is built using Next.js, Tailwind CSS, Shadcn-ui, Magic-ui, Supabase, NextAuth, and Prisma. It is powered by Vercel and the OpenAI API. It uses the Goodreads API to generate category-based quotes as per your current mood/vibe.
-
-## Video Overview
-
-Watch the video below for a quick overview of QuotesAI:
-
-https://github.com/DarkInventor/QuotesAI/assets/67015517/e59b2402-772b-4ede-a28d-951278e6c555
-
+OASIS Companion Landing is built using Next.js, Tailwind CSS, Shadcn-ui, Magic-ui, Supabase, NextAuth, and Prisma. It is powered by Vercel and the OpenAI API.
 
 ## Environment Variables
 
@@ -50,8 +43,8 @@ STRIPE_WEBHOOK_SECRET=
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/DarkInventor/QuotesAI.git
-   cd QuotesAI
+   git clone https://github.com/jieunchoi-hw/oasis-companion-landing.git
+   cd oasis-companion-landing
    ```
 
 2. **Create and populate the `.env` file:**
@@ -77,7 +70,7 @@ STRIPE_WEBHOOK_SECRET=
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/DarkInventor/QuotesAI/blob/main/License.md) file for details.
+This project is licensed under the MIT License. See the [LICENSE](License.md) file for details.
 
 ## Contributing
 
