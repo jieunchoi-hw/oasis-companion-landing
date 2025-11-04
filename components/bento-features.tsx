@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -27,14 +27,14 @@ const featureSections: FeatureSection[] = [
         title: "메일·공지·웹페이지를 한 번에 요약",
         description:
           "현재 화면을 자동으로 분석해 핵심 문장만 정리합니다.\n불필요한 문장은 제거하고, 요점만 빠르게 파악할 수 있습니다.",
-        image: "/features/web-summary.png",
+        image: withBasePath("/features/web-summary.png"),
         imageAlt: "요약 결과 예시",
       },
       {
         title: "클릭 한 번으로 검색 결과 확인",
         description:
           "웹, 뉴스, YouTube, 기술 문서까지 통합 검색을 지원합니다.\n탭을 이동하지 않아도 필요한 정보를 한눈에 확인할 수 있습니다.",
-        image: "/features/summary-button.png",
+        image: withBasePath("/features/summary-button.png"),
         imageAlt: "검색 결과 예시",
       },
     ],
@@ -49,14 +49,14 @@ const featureSections: FeatureSection[] = [
         title: "사내 문서와 이메일을 안심하고 물어보세요",
         description:
           '회의록, 보고서, 프로젝트 문서 등 사내 자산을 안전하게 분석합니다.\n외부 유출 걱정 없이 "이 문서 요약해줘" "지난 회의 내용 찾아줘"라고 질문하세요.',
-        image: "/features/safe-email.png",
+        image: withBasePath("/features/safe-email.png"),
         imageAlt: "사내 문서 요약을 요청하는 화면",
       },
       {
         title: "내부 시스템에 바로 연결하세요",
         description:
           "OASIS Companion은 사내 포털, 파일 시스템, 데이터베이스 등\n내부 시스템과 직접 연동되어 필요한 정보를 즉시 찾아줍니다.",
-        image: "/features/safe-portal.png",
+        image: withBasePath("/features/safe-portal.png"),
         imageAlt: "내부 시스템 데이터에 질의하는 Companion UI",
       },
     ],
@@ -71,14 +71,14 @@ const featureSections: FeatureSection[] = [
         title: "사용자의 말투와 별명까지 기억",
         description:
           "개인별 선호 표현과 업무 스타일을 반영해\n자연스러운 맞춤 응답을 제공합니다.",
-        image: "/features/custom-setting.png",
+        image: withBasePath("/features/custom-setting.png"),
         imageAlt: "사용자별 톤으로 응답하는 Companion",
       },
       {
         title: "문맥을 이해하는 대화형 기억",
         description:
           "형태소 분석과 유사도 기반 메모리로\n이전 대화 내용을 이해하고 연속적인 대화를 이어갑니다.",
-        image: "/features/custom-memory.png",
+        image: withBasePath("/features/custom-memory.png"),
         imageAlt: "문맥 연결된 대화 흐름 예시",
       },
     ],

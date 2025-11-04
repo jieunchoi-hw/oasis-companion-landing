@@ -1,8 +1,9 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import { withBasePath } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 type LogoProps = Omit<React.ComponentProps<typeof Image>, "src" | "alt">;
 
@@ -16,7 +17,9 @@ export function Logo(props: LogoProps) {
 
   // resolvedTheme는 system 테마를 실제 테마로 변환해줌
   const isDark = mounted && resolvedTheme === "dark";
-  const logoSource = isDark ? "/darklogo.svg" : "/lightlogo.svg";
+  const logoSource = isDark
+    ? withBasePath("/darklogo.svg")
+    : withBasePath("/lightlogo.svg");
 
   return (
     <Image
@@ -28,4 +31,3 @@ export function Logo(props: LogoProps) {
     />
   );
 }
-
