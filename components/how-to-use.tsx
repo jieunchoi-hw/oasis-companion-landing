@@ -2,20 +2,24 @@
 
 import React from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 import { useInView } from "@/hooks/use-in-view";
 
 export function HowToUse() {
-  const { ref: titleRef, isInView: titleInView } = useInView({ threshold: 0.1 });
-  const { ref: cardsRef, isInView: cardsInView } = useInView({ threshold: 0.1 });
+  const { ref: titleRef, isInView: titleInView } = useInView({
+    threshold: 0.1,
+  });
+  const { ref: cardsRef, isInView: cardsInView } = useInView({
+    threshold: 0.1,
+  });
 
   return (
     <section id="how-to-use" className="container py-8 md:py-12 lg:py-24">
-      <div 
+      <div
         ref={titleRef}
         className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center mb-12"
       >
-        <h3 
+        <h3
           className={cn(
             "text-center text-sm font-semibold text-gray-500 pb-2 transition-all duration-1000 ease-out",
             titleInView
@@ -26,7 +30,7 @@ export function HowToUse() {
         >
           EASY START
         </h3>
-        <p 
+        <p
           className={cn(
             "max-w-[85%] leading-normal bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl sm:leading-8 md:leading-10 font-semibold transition-all duration-1000 ease-out",
             titleInView
@@ -39,12 +43,12 @@ export function HowToUse() {
         </p>
       </div>
 
-      <div 
+      <div
         ref={cardsRef}
         className="mx-auto grid justify-center gap-8 sm:grid-cols-1 md:grid-cols-3 max-w-[64rem]"
       >
         {/* Step 1: Chrome 확장프로그램 설치 */}
-        <div 
+        <div
           className={cn(
             "relative overflow-hidden rounded-lg border bg-background p-6 hover:shadow-lg transition-all duration-1000 ease-out",
             cardsInView
@@ -65,7 +69,7 @@ export function HowToUse() {
             </div>
             <div className="w-full h-48 rounded-lg overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-900/20 dark:via-blue-900/20 dark:to-pink-900/20 flex items-center justify-center border border-purple-100 dark:border-purple-800/30">
               <Image
-                src="/use/chrome.png"
+                src={withBasePath("/use/chrome.png")}
                 alt="Chrome 확장프로그램 설치 화면"
                 width={400}
                 height={192}
@@ -76,7 +80,7 @@ export function HowToUse() {
         </div>
 
         {/* Step 2: 사내 계정으로 로그인 */}
-        <div 
+        <div
           className={cn(
             "relative overflow-hidden rounded-lg border bg-background p-6 hover:shadow-lg transition-all duration-1000 ease-out",
             cardsInView
@@ -97,7 +101,7 @@ export function HowToUse() {
             </div>
             <div className="w-full h-48 rounded-lg overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-900/20 dark:via-blue-900/20 dark:to-pink-900/20 flex items-center justify-center border border-purple-100 dark:border-purple-800/30">
               <Image
-                src="/use/login.png"
+                src={withBasePath("/use/login.png")}
                 alt="사내 계정 로그인 화면"
                 width={400}
                 height={192}
@@ -108,7 +112,7 @@ export function HowToUse() {
         </div>
 
         {/* Step 3: 바로 사용 */}
-        <div 
+        <div
           className={cn(
             "relative overflow-hidden rounded-lg border bg-background p-6 hover:shadow-lg transition-all duration-1000 ease-out",
             cardsInView
@@ -129,7 +133,7 @@ export function HowToUse() {
             </div>
             <div className="w-full h-48 rounded-lg overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-900/20 dark:via-blue-900/20 dark:to-pink-900/20 flex items-center justify-center border border-purple-100 dark:border-purple-800/30">
               <Image
-                src="/use/chat.png"
+                src={withBasePath("/use/chat.png")}
                 alt="바로 사용 화면"
                 width={400}
                 height={192}
