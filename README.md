@@ -79,31 +79,24 @@ This project is licensed under the MIT License. See the [LICENSE](License.md) fi
 
 ## GitHub Actions CI/CD 설정
 
-이 프로젝트는 GitHub Actions를 통해 자동으로 빌드 및 테스트를 수행합니다.
+이 프로젝트는 GitHub Actions를 통해 자동으로 빌드 및 GitHub Pages에 배포됩니다.
 
-### 필요한 GitHub Secrets 설정
+### GitHub Pages 설정
 
-GitHub 저장소의 Settings > Secrets and variables > Actions에서 다음 secrets를 추가하세요:
-
-1. **DATABASE_URL**: 데이터베이스 연결 URL
-2. **NEXTAUTH_URL**: 프로덕션 URL (예: https://your-domain.com)
-3. **NEXTAUTH_SECRET**: NextAuth 시크릿 키 (랜덤 문자열 생성)
-4. **GOOGLE_CLIENT_ID**: Google OAuth 클라이언트 ID
-5. **GOOGLE_CLIENT_SECRET**: Google OAuth 클라이언트 시크릿
-6. **GITHUB_ID**: GitHub OAuth 앱 ID
-7. **GITHUB_SECRET**: GitHub OAuth 앱 시크릿
-8. **GITHUB_ACCESS_TOKEN**: GitHub 액세스 토큰
-9. **STRIPE_API_KEY**: Stripe API 키
-10. **STRIPE_WEBHOOK_SECRET**: Stripe 웹훅 시크릿
+1. GitHub 저장소의 **Settings > Pages**로 이동합니다
+2. **Source**를 **GitHub Actions**로 설정합니다
+3. 저장하면 자동으로 GitHub Pages 환경이 생성됩니다
 
 ### CI/CD 프로세스
 
-- `main` 브랜치에 push하면 자동으로 빌드 및 마이그레이션이 실행됩니다
+- `main` 브랜치에 push하면 자동으로 빌드 후 GitHub Pages에 배포됩니다
 - Pull Request가 생성되면 CI가 실행되어 빌드 및 린트를 확인합니다
+- 배포된 사이트는 `https://jieunchoi-hw.github.io/oasis-companion-landing/`에서 확인할 수 있습니다
 
-### 배포
+### 참고사항
 
-배포는 원하는 플랫폼(Vercel, AWS, Railway, Render 등)에서 별도로 설정하세요.
+- Next.js가 정적 사이트로 빌드되므로, 서버 사이드 기능(API Routes, Server Components 등)은 사용할 수 없습니다
+- 환경 변수는 빌드 시점에만 사용되며, 런타임 환경 변수는 사용할 수 없습니다
 
 ## Contributing
 
