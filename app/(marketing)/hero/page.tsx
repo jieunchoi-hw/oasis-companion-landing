@@ -78,8 +78,11 @@ function HeroPage() {
                 )}
                 style={{ transitionDelay: "0.5s" }}
               >
-                보안은 그대로, <br />
-                일하는 방식은 새롭게 <br />
+                <span className="whitespace-nowrap">보안은 그대로,</span> <br />
+                <span className="whitespace-nowrap">
+                  일하는 방식은 새롭게
+                </span>{" "}
+                <br />
                 <span className="inline-flex items-center gap-2">
                   <span className="h-7 sm:h-8 md:h-9 lg:h-11 w-auto inline-block relative">
                     <Logo
