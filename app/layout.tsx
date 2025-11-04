@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: "OASIS Companion changes your life and works.",
     images: [
       {
-        url: "/thumbnail.png",
+        url: "https://jieunchoi-hw.github.io/oasis-companion-landing/thumbnail.png",
         width: 1200,
         height: 630,
         alt: "OASIS Companion",
@@ -34,9 +34,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OASIS Companion",
-    description: "OASIS Companion changes your life and works.",
-    images: ["/thumbnail.png"],
+    images: [
+      {
+        url: "https://jieunchoi-hw.github.io/oasis-companion-landing/thumbnail.png",
+        width: 1200,
+        height: 630,
+        alt: "OASIS Companion changes your life and works.",
+      },
+    ],
   },
 };
 
