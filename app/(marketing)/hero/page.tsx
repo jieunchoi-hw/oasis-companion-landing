@@ -4,11 +4,11 @@ import { BentoDemo } from "@/components/bento-features";
 import { HowToUse } from "@/components/how-to-use";
 import { Icons } from "@/components/icons";
 import BlurIn from "@/components/magicui/blur-in";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import ShineBorder from "@/components/magicui/shine-border";
 import { Companies } from "@/components/social-proof";
 import { buttonVariants } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
+import { VideoPlayer } from "@/components/video-player";
 import { cn, withBasePath } from "@/lib/utils";
 import { useInView } from "@/hooks/use-in-view";
 import Link from "@/node_modules/next/link";
@@ -307,25 +307,13 @@ function HeroPage() {
             </div>
           </div>
         </div>
-        <div
-          ref={videoRef}
-          className={cn(
-            "relative rounded-xl mx-auto justify-center flex flex-col items-center lg:max-w-[1000px] overflow-hidden transition-all duration-1000 ease-out",
-            videoInView
-              ? "opacity-100 translate-y-0 scale-100"
-              : "opacity-0 translate-y-12 scale-95"
-          )}
-        >
-          <video
-            src={withBasePath("/video/intro.mp4")}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="lg:max-w-[1000px] rounded-[inherit] border object-contain shadow-lg"
+        
+        {/* Video Player Component */}
+        <div ref={videoRef}>
+          <VideoPlayer 
+            videoSrc={withBasePath("/video/intro.mp4")}
+            isInView={videoInView}
           />
-
-          <BorderBeam size={250} />
         </div>
       </section>
 
