@@ -14,7 +14,8 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
           <Icons.logo className="h-6 w-auto" />
           <Badge className="hidden lg:block md:block">Companion</Badge>
           <p className="text-center text-sm leading-loose md:text-left md:whitespace-nowrap text-neutral-600 dark:text-neutral-400">
-            Copyright © 2025 OASIS Companion. All rights reserved.
+            Copyright © 2025 OASIS Companion. <br className="md:hidden" />
+            All rights reserved.
           </p>
         </div>
         {/* <ModeToggle /> */}
