@@ -16,19 +16,21 @@ import React from "react";
 import { Icons } from "./icons";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";
+import { Badge } from "./ui/badge";
 
 function MobileNav() {
   const [open, setOpen] = React.useState(false);
 
   return (
     <MobileLink
-    href="/"
-    className="flex items-center lg:hidden sm:block md:hidden"
-    onOpenChange={setOpen}
-  >
-    <Icons.logo className="mr-2 h-6 w-auto" />
-    <span className="font-bold">OASIS Companion</span>
-  </MobileLink>
+      href="/"
+      className="flex items-center lg:hidden sm:block md:hidden"
+      onOpenChange={setOpen}
+    >
+      <Icons.logo className="mr-2 h-6 w-auto" />
+      <span className="font-bold"></span>
+      <Badge className="">Companion</Badge>
+    </MobileLink>
   );
 }
 
