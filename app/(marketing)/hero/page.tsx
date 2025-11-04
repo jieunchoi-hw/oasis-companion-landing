@@ -222,16 +222,14 @@ function HeroPage() {
             </div>
           </div>
         </div>
-        <div className="relative rounded-xl mx-auto justify-center flex flex-col items-center lg:max-w-[1000px] overflow-hidden md:overflow-auto lg:overflow-auto">
-          <img
-            src="/darkoutput.png"
-            alt="Hero Image"
-            className="hidden lg:max-w-[1000px]  rounded-[inherit] border object-contain shadow-lg dark:block overflow-hidden md:overflow-auto lg:overflow-auto"
-          />
-          <img
-            src="/lightoutput.png"
-            alt="Hero Image"
-            className="block lg:max-w-[1000px]  rounded-[inherit] border object-contain shadow-lg dark:hidden overflow-hidden md:overflow-auto lg:overflow-auto"
+        <div className="relative rounded-xl mx-auto justify-center flex flex-col items-center lg:max-w-[1000px] overflow-hidden">
+          <video
+            src="/video/intro.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="lg:max-w-[1000px] rounded-[inherit] border object-contain shadow-lg"
           />
 
           <BorderBeam size={250} />
