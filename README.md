@@ -1,43 +1,6 @@
 # OASIS Companion Landing
 
-OASIS Companion Landing is built using Next.js, Tailwind CSS, Shadcn-ui, Magic-ui, Supabase, NextAuth, and Prisma. It is powered by Vercel and the OpenAI API.
-
-## Environment Variables
-
-### Supabase Connection Pooling
-
-```
-DATABASE_URL=
-```
-
-### NextAuth Configuration
-
-```
-NEXTAUTH_SECRET=
-NEXTAUTH_URL=http://localhost:3000
-```
-
-### Google OAuth Configuration
-
-```
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-```
-
-### GitHub OAuth Configuration
-
-```
-GITHUB_ID=
-GITHUB_SECRET=
-GITHUB_ACCESS_TOKEN=
-```
-
-### Stripe Configuration
-
-```
-STRIPE_API_KEY=
-STRIPE_WEBHOOK_SECRET=
-```
+OASIS Companion Landing is a static landing page built using Next.js, Tailwind CSS, Shadcn-ui, and Magic-ui. It is designed for static hosting on GitHub Pages.
 
 ## Setup Instructions
 
@@ -48,24 +11,22 @@ STRIPE_WEBHOOK_SECRET=
    cd oasis-companion-landing
    ```
 
-2. **Create and populate the `.env` file:**
-
-   ```sh
-   cp .env.example .env
-   ```
-
-   Edit the `.env` file and add your credentials.
-
-3. **Install dependencies:**
+2. **Install dependencies:**
 
    ```sh
    pnpm install
    ```
 
-4. **Run the development server:**
+3. **Run the development server:**
 
    ```sh
    pnpm run dev
+   ```
+
+4. **Build for production:**
+
+   ```sh
+   pnpm run build
    ```
 
 5. **Open your browser and navigate to:**
@@ -96,7 +57,7 @@ This project is licensed under the MIT License. See the [LICENSE](License.md) fi
 ### 참고사항
 
 - Next.js가 정적 사이트로 빌드되므로, 서버 사이드 기능(API Routes, Server Components 등)은 사용할 수 없습니다
-- 환경 변수는 빌드 시점에만 사용되며, 런타임 환경 변수는 사용할 수 없습니다
+- 이 프로젝트는 순수한 정적 랜딩 페이지로, 인증 및 데이터베이스 기능을 포함하지 않습니다
 
 ## Contributing
 
