@@ -2,7 +2,7 @@
 
 import { cn, withBasePath } from "@/lib/utils";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface FeatureSection {
   smallTitle: string;
@@ -21,7 +21,7 @@ const featureSections: FeatureSection[] = [
     smallTitle: "OASIS Companion은",
     largeTitle: "편리합니다",
     description:
-      "복잡한 문서나 이메일, 웹페이지도 클릭 한 번이면 끝.\n화면을 전환하지 않고, 지금 보고 있는 내용 그대로 요약하거나 검색할 수 있습니다.\n업무 흐름을 끊지 않고 필요한 정보를 즉시 얻으세요.",
+      "복잡한 문서나 이메일, 웹페이지도 클릭 한 번이면 끝.\n화면을 전환하지 않고, 지금 보고 있는 내용 그대로 요약하거나 검색할 수 있습니다.",
     cards: [
       {
         title: "메일·공지·웹페이지를 한 번에 요약",
@@ -43,7 +43,7 @@ const featureSections: FeatureSection[] = [
     smallTitle: "OASIS Companion은",
     largeTitle: "안전합니다",
     description:
-      "회사 내부 문서와 시스템에 대해서도 보안 걱정 없이 질문할 수 있습니다.\nOASIS Companion은 사내 네트워크와 연동되어,\n외부로 데이터를 전송하지 않고 내부에서만 질의·응답을 처리합니다.\n민감한 업무 자료도 안심하고 활용하세요.",
+      "회사 내부 문서와 시스템에 대해서도 보안 걱정 없이 질문할 수 있습니다.\nOASIS Companion은 사내 네트워크와 연동되어,\n외부로 데이터를 전송하지 않고 내부에서만 질의·응답을 처리합니다.",
     cards: [
       {
         title: "사내 문서와 이메일을 안심하고 물어보세요",
@@ -65,7 +65,7 @@ const featureSections: FeatureSection[] = [
     smallTitle: "OASIS Companion은",
     largeTitle: "사용자 맞춤형입니다",
     description:
-      "사용자의 패턴과 대화 맥락을 학습하여,\n질문할수록 더 정확하고 개인화된 답변을 제공합니다.\n업무 방식에 자연스럽게 녹아드는 똑똑한 AI 파트너입니다.",
+      "사용자의 패턴과 대화 맥락을 학습하여,\n질문할수록 더 정확하고 개인화된 답변을 제공합니다.",
     cards: [
       {
         title: "사용자의 말투와 별명까지 기억",
@@ -97,6 +97,31 @@ function FeatureCard({
   imageAlt?: string;
 }) {
   const [imageError, setImageError] = useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isPreviewOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsPreviewOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isPreviewOpen]);
+
+  const handleOpenPreview = () => {
+    if (!imageError) {
+      setIsPreviewOpen(true);
+    }
+  };
 
   return (
     <div
@@ -113,15 +138,27 @@ function FeatureCard({
       {/* 이미지 영역 */}
       <div className="relative h-[80%] w-full overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-purple-950/20 dark:via-blue-950/20 dark:to-pink-950/20">
         {image && !imageError ? (
-          <div className="absolute inset-4 md:inset-6 lg:inset-8">
-            <Image
-              src={image}
-              alt={imageAlt || title}
-              fill
-              className="object-contain transition-transform duration-500 ease-out group-hover:scale-110"
-              onError={() => setImageError(true)}
-            />
-          </div>
+          <button
+            type="button"
+            onClick={handleOpenPreview}
+            className="absolute inset-4 md:inset-6 lg:inset-8 cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-500"
+            aria-label="이미지 크게 보기"
+          >
+            <span className="relative block h-full w-full">
+              <Image
+                src={image}
+                alt={imageAlt || title}
+                fill
+                className="object-contain transition-transform duration-500 ease-out group-hover:scale-110"
+                onError={() => {
+                  setImageError(true);
+                  setIsPreviewOpen(false);
+                }}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority={false}
+              />
+            </span>
+          </button>
         ) : (
           <div className="flex h-full items-center justify-center p-8">
             <div className="text-center space-y-4 w-full">
@@ -157,6 +194,53 @@ function FeatureCard({
           {description}
         </p>
       </div>
+
+      {isPreviewOpen && image && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${imageAlt || title} 이미지 확대보기`}
+          onClick={() => setIsPreviewOpen(false)}
+        >
+          <button
+            type="button"
+            className="absolute right-6 top-6 rounded-full bg-white/10 p-2 text-white shadow-lg transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            onClick={() => setIsPreviewOpen(false)}
+            aria-label="닫기"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+
+          <div
+            className="relative w-[90vw] max-w-6xl h-[85vh] flex items-center justify-center"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="relative w-full h-full">
+              <Image
+                src={image}
+                alt={imageAlt || title}
+                fill
+                className="rounded-lg object-contain drop-shadow-2xl"
+                sizes="90vw"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
