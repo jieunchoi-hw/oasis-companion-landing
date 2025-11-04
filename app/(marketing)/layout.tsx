@@ -13,28 +13,45 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "OASIS Companion",
-  description: "OASIS Companion changes your life and works.",
+  description: "보안은 그대로, 일하는 방식은 새롭게. 웹페이지·이메일·문서를 한 번에 요약하고, 필요한 정보를 바로 물어보세요. 대기업·공공기관의 망분리 환경에서도 안심하고 사용할 수 있습니다.",
+  metadataBase: new URL('https://jieunchoi-hw.github.io/oasis-companion-landing'),
+  viewport: "width=device-width, initial-scale=1",
   openGraph: {
-    title: "OASIS Companion",
-    description: "OASIS Companion changes your life and works.",
+    title: "OASIS Companion - 보안은 그대로, 일하는 방식은 새롭게",
+    description: "웹페이지·이메일·문서를 한 번에 요약하고, 필요한 정보를 바로 물어보세요. 대기업·공공기관의 망분리 환경에서도 안심하고 사용할 수 있습니다.",
+    url: "https://jieunchoi-hw.github.io/oasis-companion-landing",
+    siteName: "OASIS Companion",
     images: [
       {
-        url: withBasePath("/thumbnail.png"),
+        url: "/thumbnail.png",
         width: 1200,
         height: 630,
-        alt: "OASIS Companion",
+        alt: "OASIS Companion - 보안은 그대로, 일하는 방식은 새롭게",
+        type: "image/png",
       },
     ],
+    locale: "ko_KR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "OASIS Companion",
-    description: "OASIS Companion changes your life and works.",
-    images: [withBasePath("/thumbnail.png")],
+    title: "OASIS Companion - 보안은 그대로, 일하는 방식은 새롭게",
+    description: "웹페이지·이메일·문서를 한 번에 요약하고, 필요한 정보를 바로 물어보세요.",
+    images: ["/thumbnail.png"],
+    creator: "@oasis_companion",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
   icons: {
-    icon: withBasePath("/favicon.ico"),
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 
