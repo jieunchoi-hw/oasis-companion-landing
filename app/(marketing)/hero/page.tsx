@@ -205,7 +205,7 @@ function HeroPage() {
         </div>
       </section>
 
-      <Companies />
+      {/* <Companies /> */}
 
       <section
         id="features"
